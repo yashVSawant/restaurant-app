@@ -1,19 +1,22 @@
-import React,{useState} from "react";
-import classes from './MealsForm.module.css'
+import React from "react";
+import classes from './MealsForm.module.css';
+
+import Input from "../UI/Input";
 
 const MealsForm = ()=>{
-    const [amount , setAmount] = useState(1);
-    const addClickHandler = (event)=>{
-        event.preventDefault();
-        setAmount(amount + 1);
-    }
     return(
         <form>
             <div>
-                <h4>Amount</h4>
-                <div className={classes.amountDiv}>{amount}</div>
+                <Input lable="Amount" input={{
+                    id:'amount',
+                    type:'number',
+                    min:1,
+                    max:5,
+                    defaultValue:1,
+                    step:1
+                    }}/>
             </div>
-            <button type="submit" className={classes.button} onClick={addClickHandler}>+Add</button>
+            <button type="submit" className={classes.button}>+Add</button>
         </form>
     )
 }
