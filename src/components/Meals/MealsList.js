@@ -1,14 +1,23 @@
 import React from "react";
-import classes from './MealsList.module.css'
+import classes from './MealsList.module.css';
+
+import MealsForm from "./MealsForm";
 
 const MealsList = (props)=>{
-    return (
-        props.meals.map(({id ,name,description , price})=>{
-            return <li key={id} className={classes.meal}>
-                <h3>{name}</h3><p className={classes.description}>{description}</p><p className={classes.price}>{price}</p>
+   return props.meals.map(({id ,name,description , price})=>{
+        return (
+            <li key={id} className={classes.meal}>
+                <div>
+                    <h3>{name}</h3>
+                    <p className={classes.description}>{description}</p>
+                    <p className={classes.price}>${price}</p>
+                </div>
+                <div>
+                    <MealsForm/>
+                </div>
             </li>
-        })
-    )
+        )
+    })
 }
 
 export default MealsList;

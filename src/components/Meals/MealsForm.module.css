@@ -1,0 +1,26 @@
+.button{
+    background-color: #b94517;
+    cursor: pointer;
+    font: inherit;
+    border: none;
+    /* background-color: #4d1601; */
+    color: white;
+    padding: 0.25rem 1.7rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 25px;
+    font-weight: bold;
+}
+.amountDiv{
+    border: solid 1px rgb(145, 143, 143);
+    padding: 0.10rem 1rem;
+    border-radius: 5px;
+    margin-inline: 5px;
+}
+
+form div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
