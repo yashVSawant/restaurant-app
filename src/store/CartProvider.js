@@ -6,21 +6,28 @@ const CartProvider = (props)=>{
     const [totalAmount , setTotalAmount] = useState(0);
     
     const addItemHandler = (newItem)=>{
-        setItem([...item,newItem])
+        const isPresent = item.find((i)=>i.id === newItem.id)
+        if(isPresent){
+            isPresent.amount = +isPresent.amount + +newItem.amount
+        }else{
+            setItem([...item,newItem])
+        }
         
         setTotalAmount(totalAmount + newItem.price)
     }
     const removeItemHandler = (id)=>{
-        const amountToReduce = item.filter((i)=>{
-            return i.id === id
-        }).reduce((currentValue ,i)=>{return currentValue + i.price});
-
-        const filterdItem = item.filter((i)=>{
-            return i.id !== id
-        })
-        
+        let filterdItem = item;
+        const getItem = item.find((i)=>i.id === id)
+        if(getItem.amount > 1){
+            getItem.amount = +getItem.amount - 1;
+        }else{
+            filterdItem = item.filter((i)=>{
+                return i.id !== id
+            })
+        }
+        const amountAvailable = filterdItem.reduce((currentValue ,i)=>{return currentValue + +i.price},0);
         setItem([...filterdItem]);
-        setTotalAmount(totalAmount - amountToReduce)
+        setTotalAmount(amountAvailable)
     }
     const cartContext = {
         item:item,

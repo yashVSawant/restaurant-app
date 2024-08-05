@@ -6,12 +6,12 @@ import Input from "../UI/Input";
 
 const MealsForm = (props)=>{
     const cartCtx = useContext(CartContext);
-    const addHandler = (event)=>{
+    const addHandler = (event , a)=>{
         event.preventDefault()
-        
         const amount = document.getElementById('amount').value;
-        cartCtx.addItem({...props.item,amount:amount })
+        cartCtx.addItem({...props.item,amount:amount });
     }
+    // console.log(props.item)
     return(
         <form>
             <div>
