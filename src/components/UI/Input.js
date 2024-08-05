@@ -5,7 +5,7 @@ import React from "react";
 const Input = (props)=>{
     return (
         <div>
-            <lable htmlFor={props.input.id}>{props.lable}</lable>
+            <label htmlFor={props.input.id}>{props.lable}</label>
             <input {...props.input}/>
         </div>
     )
