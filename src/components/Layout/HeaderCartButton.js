@@ -1,28 +1,25 @@
-import React,{useState} from "react";
+import React,{useContext} from "react";
 
 import CartIcon from "../Cart/CartIcon";
+import CartContext from "../../store/cart-context";
 
 import classes from './HeaderCartButton.module.css';
-import Cart from '../Cart/Cart';
 
 
 
-const HeaderCartButton = ()=>{
-    const [opneCart , setOpneCart] = useState(false)
-    const cartClickHandler = ()=>{
-        setOpneCart(true)
-    }
-    const closeHandler = ()=>{
-        setOpneCart(false)
-    }
+const HeaderCartButton = (props)=>{
+    const cartCtx = useContext(CartContext);
+
+    const numberOfCartItems = cartCtx.item.reduce((currentValue ,i)=>{
+        return +(i.amount) + currentValue
+    },0);
     return(
-        <button className={classes.button} type="button" onClick={cartClickHandler}>
+        <button className={classes.button} type="button" onClick={props.onClick}>
             <span className={classes.icon}>
                 <CartIcon/>
             </span>
             <span>Your Cart</span>
-            <span className={classes.badge}>0</span>
-            {opneCart && <Cart onClose={closeHandler}/>}
+            <span className={classes.badge}>{numberOfCartItems}</span>
         </button>
     )
 }

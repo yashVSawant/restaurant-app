@@ -1,10 +1,13 @@
 import React from "react";
 import classes from './MealsList.module.css';
 
+
 import MealsForm from "./MealsForm";
 
 const MealsList = (props)=>{
+
    return props.meals.map(({id ,name,description , price})=>{
+    
         return (
             <li key={id} className={classes.meal}>
                 <div>
@@ -13,7 +16,7 @@ const MealsList = (props)=>{
                     <p className={classes.price}>${price}</p>
                 </div>
                 <div>
-                    <MealsForm/>
+                    <MealsForm item={{id ,name , price}}/>
                 </div>
             </li>
         )
